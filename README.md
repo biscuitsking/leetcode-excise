@@ -1,2 +1,3 @@
 # leetcode-excise
-开始刷题
+python3
+my_email:pslixin@bupt.edu.cn

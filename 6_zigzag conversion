@@ -1,0 +1,32 @@
+class Solution:
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if len(s) <= numRows:
+            return s
+        if numRows == 1:
+            return s
+        string_list = []
+        for i in range(numRows):
+            string_list.append('')
+            string_list[i] = string_list[i] + s[i]
+        k = 1
+        
+        for j in range(numRows, len(s)):
+            
+            
+            if j >= (k - 1) * (numRows * 2 - 2) + numRows and j < k * (numRows + numRows - 2):
+                string_list[k * (numRows + numRows - 2) - j] = string_list[k * (numRows + numRows - 2) - j] + s[j]
+            else:# j >= (k-1) * numRows + numRows - 2 and j < k * numRows:
+                
+                string_list[(j - (k-1) * (numRows - 2)) % numRows] = string_list[(j - (k-1) * (numRows - 2)) % numRows] + s[j]
+                
+            if j == k * (numRows + numRows - 2) - 1:
+                k += 1
+            
+        
+        
+        return ''.join(string_list)
